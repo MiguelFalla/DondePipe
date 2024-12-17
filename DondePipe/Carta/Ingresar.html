@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Roles - Donde Pipe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+        }
+        header {
+            background-color: #000000;
+            color: rgb(0, 0, 0);
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+        }
+        .role-section {
+            background: rgb(0, 0, 0);
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(241, 239, 239, 0.1);
+        }
+        .role-section h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .role-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .role-section ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .role-section form {
+            margin-top: 1rem;
+        }
+        .role-section form input,
+        .role-section form select,
+        .role-section form button {
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ff0000;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 300px;
+        }
+        .role-section form button {
+            background-color: #000000;
+            color: white;
+            cursor: pointer;
+            border: 1px solid #ff0000;
+        }
+    </style>
+    <script>
+        async function handleAction(role, action) {
+            const form = document.getElementById(`${role}-${action}`);
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch(`/api/${role}/${action}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) throw new Error('Error en la solicitud');
+
+                const result = await response.json();
+                alert(`Acción realizada: ${result.message}`);
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+            }
+        }
+
+        async function viewActiveOrders() {
+            try {
+                const response = await fetch('/api/cajero/pedidosActivos', {
+                    method: 'GET',
+                });
+
+                if (!response.ok) throw new Error('Error al obtener pedidos activos');
+
+                const orders = await response.json();
+                const orderList = document.getElementById('activeOrderList');
+                orderList.innerHTML = '';
+
+                orders.forEach(order => {
+                    const li = document.createElement('li');
+                    li.textContent = `Pedido ID: ${order.id}, Monto: ${order.amount}, Fecha: ${order.date}`;
+                    orderList.appendChild(li);
+                });
+
+                document.getElementById('activeOrders').style.display = 'block';
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+            }
+        }
+
+        async function manageProfile() {
+            const form = document.getElementById('cliente-gestionarPerfil');
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('/api/cliente/gestionarPerfil', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) throw new Error('Error en la solicitud');
+
+                const result = await response.json();
+                alert(`Perfil actualizado: ${result.message}`);
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+            }
+        }
+
+        async function viewOrderHistory() {
+            try {
+                const response = await fetch('/api/cliente/historialPedidos', {
+                    method: 'GET',
+                });
+
+                if (!response.ok) throw new Error('Error al obtener historial de pedidos');
+
+                const orders = await response.json();
+                const orderList = document.getElementById('orderList');
+                orderList.innerHTML = '';
+
+                orders.forEach(order => {
+                    const li = document.createElement('li');
+                    li.textContent = `Pedido ID: ${order.id}, Monto: ${order.amount}, Fecha: ${order.date}`;
+                    orderList.appendChild(li);
+                });
+
+                document.getElementById('orderHistory').style.display = 'block';
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Gestión de Roles - Donde Pipe</h1>
+        <div class="menu container">
+            <img class="logo-1" src="images/logo.svg" alt="">
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img class="menu-icono" src="images/menu.png" alt="">
+            </label>
+            <nav class="navbar">
+                <div class="menu-1">
+                    <ul>
+                        <li><a href="/Carta/index.html">Inicio</a></li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="/Menu/menu.html">Carta</a></li>
+                        <li><a href="/Carta/Ingresar.html">Ingresar</a></li>
+                    </ul>
+                </div>
+                <img class="logo-2" src="images/logo.svg" alt="Logo">
+                <div class="menu-2">        
+                    <div class="socials">
+                        <a href="https://www.instagram.com/donde.pipe_/">
+                            <div class="social">
+                                <img src="images/s3.svg" alt="">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- Sección para Administrador -->
+        <div class="role-section">
+            <h2>Administrador</h2>
+            <form id="admin-crearUsuario" onsubmit="event.preventDefault(); handleAction('admin', 'crearUsuario')">
+                <input type="text" name="username" placeholder="Nombre de Usuario" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <label for="userType">Tipo de Usuario:</label>
+                <select name="userType" id="userType" required>
+                    <option value="cliente">Cliente</option>
+                    <option value="trabajador">Trabajador</option>
+                    <option value="cajero">Cajero</option>
+                </select>
+                <button type="submit">Crear Usuario</button>
+            </form>
+            <button onclick="generateSalesReport()">Generar Reporte de Ventas</button>
+
+            <!-- Gestión de Productos -->
+            <form id="admin-gestionarProductos" onsubmit="event.preventDefault(); handleAction('admin', 'gestionarProductos')">
+                <input type="text" name="productName" placeholder="Nombre del Producto" required>
+                <input type="number" name="price" placeholder="Precio" required>
+                <input type="file" name="productImage" accept="image/*" required>
+                <label for="productType">Tipo de Comida:</label>
+                <select name="productType" id="productType" required>
+                    <option value="entradas">Entradas</option>
+                    <option value="principal">Platos Principales</option>
+                    <option value="bebidas">Bebidas</option>
+                    <option value="postres">Postres</option>
+                </select>
+                <button type="submit">Gestionar Producto</button>
+            </form>
+        </div>
+
+        <!-- Sección para Cajero -->
+        <div class="role-section">
+            <h2>Cajero</h2>
+            <form id="cajero-aceptarPagos" onsubmit="event.preventDefault(); handleAction('cajero', 'aceptarPagos')">
+                <input type="number" name="paymentAmount" placeholder="Monto de Pago" required>
+                <label for="paymentMethod">Medio de Pago:</label>
+                <select name="paymentMethod" id="paymentMethod" required>
+                    <option value="efectivo">Efectivo</option>
+                    <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                    <option value="transferencia">Transferencia Bancaria</option>
+                </select>
+                <button type="submit">Aceptar Pago</button>
+                <p id="paymentMessage" style="display:none;">Boleta emitida</p>
+            </form>
+            <button onclick="viewActiveOrders()">Ver Pedidos Activos</button>
+            <div id="activeOrders" style="display:none;">
+                <h3>Pedidos Activos</h3>
+                <ul id="activeOrderList"></ul>
+            </div>
+        </div>
+
+        <!-- Sección para Trabajador -->
+        <div class="role-section">
+            <h2>Trabajador</h2>
+            <form id="trabajador-gestionarPedidos" onsubmit="event.preventDefault(); handleAction('trabajador', 'gestionarPedidos')">
+                <label for="pedidoId">ID del Pedido:</label>
+                <input type="number" name="pedidoId" placeholder="ID del Pedido" required>
+                <button type="submit">Gestionar Pedido</button>
+            </form>
+        </div>
+
+        <!-- Sección para Cliente -->
+        <div class="role-section">
+            <h2>Cliente</h2>
+            <form id="cliente-realizarPedidos" onsubmit="event.preventDefault(); handleAction('cliente', 'realizarPedidos')">
+                <input type="text" name="orderDetails" placeholder="Detalles del Pedido" required>
+                <button type="submit">Realizar Pedido</button>
+            </form>
+            <form id="cliente-gestionarPerfil" onsubmit="event.preventDefault(); manageProfile()">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="email" name="email" placeholder="Correo Electrónico" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <button type="submit">Actualizar Perfil</button>
+            </form>
+            <button onclick="viewOrderHistory()">Ver Historial de Pedidos</button>
+            <div id="orderHistory" style="display:none;">
+                <h3>Historial de Pedidos</h3>
+                <ul id="orderList"></ul>
+            </div>
+        </div>
+    </main>
+    <footer class="footer container">
+        <img class="logo-2" src="images/logo.svg" alt="">
+        <div class="links">
+            <h4>Instagram</h4>
+            <div class="socials">
+                <a href="#">
+                    <div class="social">
+                        <img src="images/s3.svg" alt="">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

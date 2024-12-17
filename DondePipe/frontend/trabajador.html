@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabajador - Donde Pipe</title>
+</head>
+<body>
+    <h1>Bienvenido, Trabajador</h1>
+    <p>Aquí puedes gestionar pedidos.</p>
+    <div class="role-section">
+        <h2>Trabajador</h2>
+        <form id="trabajador-gestionarPedidos" onsubmit="event.preventDefault(); handleAction('trabajador', 'gestionarPedidos')">
+            <label for="pedidoId">ID del Pedido:</label>
+            <input type="number" name="pedidoId" placeholder="ID del Pedido" required>
+            <button onclick="alert('Gestionar Pedidos')">Gestionar Pedidos</button>
+        </form>
+    </div>

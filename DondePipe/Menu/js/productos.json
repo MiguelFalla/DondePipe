@@ -1,0 +1,112 @@
+[
+    {
+        "id": "burger-01",
+        "titulo": "Bacon Lovers",
+        "imagen": "./img/Bacon Lovers.png",
+        "categoria": {
+            "nombre": "Hamburguezas",
+            "id": "hamburguezas"
+        },
+        "precio": 7890
+    },
+    {
+        "id": "burger-02",
+        "titulo": "Tradicional",
+        "imagen": "./img/Burger2.png",
+        "categoria": {
+            "nombre": "Hamburguezas",
+            "id": "hamburguezas"
+        },
+        "precio": 5690
+    },
+    {
+        "id": "burger-03",
+        "titulo": "Doble Carne",
+        "imagen": "./img/DobleCarne.png",
+        "categoria": {
+            "nombre": "Hamburguezas",
+            "id": "hamburguezas"
+        },
+        "precio": 9890
+    },
+    {
+        "id": "burrito-01",
+        "titulo": "Burrito Simple",
+        "imagen": "./img/Burrito1.png",
+        "categoria": {
+            "nombre": "Burritos",
+            "id": "burritos"
+        },
+        "precio": 6990
+    },
+    {
+        "id": "burrito-02",
+        "titulo": "Burrito XL",
+        "imagen": "./img/Burrito2.png",
+        "categoria": {
+            "nombre": "Burritos",
+            "id": "burritos"
+        },
+        "precio": 9990
+    },
+    {
+        "id": "burrito-03",
+        "titulo": "Camiseta 01",
+        "imagen": "./img/Burrito3.png",
+        "categoria": {
+            "nombre": "Burritos",
+            "id": "burritos"
+        },
+        "precio": 12990
+    },
+    {
+        "id": "sandwich-01",
+        "titulo": "Camiseta 02",
+        "imagen": "./img/Sandwich.png",
+        "categoria": {
+            "nombre": "Sandwiches",
+            "id": "variedad"
+        },
+        "precio": 3990
+    },
+    {
+        "id": "sandwich-02",
+        "titulo": "Camiseta 03",
+        "imagen": "./img/info.png",
+        "categoria": {
+            "nombre": "Sandwiches",
+            "id": "variedad"
+        },
+        "precio": 4990
+    },
+    {
+        "id": "papasFritas-01",
+        "titulo": "Camiseta 04",
+        "imagen": "./img/papasfritas.jpg",
+        "categoria": {
+            "nombre": "PapasFritas",
+            "id": "variedad"
+        },
+        "precio": 2990
+    },
+    {
+        "id": "papasFritas-02",
+        "titulo": "Camiseta 05",
+        "imagen": "./img/papasmechada.jpg",
+        "categoria": {
+            "nombre": "PapasFritas",
+            "id": "variedad"
+        },
+        "precio": 3990
+    },
+    {
+        "id": "papasFritas-03",
+        "titulo": "Camiseta 06",
+        "imagen": "./img/papas con bacon.jpg",
+        "categoria": {
+            "nombre": "PapasFritas",
+            "id": "variedad"
+        },
+        "precio": 5990
+    }   
+]

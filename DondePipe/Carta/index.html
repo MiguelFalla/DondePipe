@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DondePipe</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header>
+        <div class="menu container">
+
+            <img class="logo-1" src="images/logo.svg" alt="">
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img class="menu-icono" src="images/menu.png" alt="">
+            </label>
+            <nav class="navbar">
+                <div class="menu-1">
+                    <ul>
+                        <li><a href="/Carta/index.html">Inicio</a></li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="/Menu/menu.html">Carta</a></li>
+                        <li><a href="/Carta/Ingresar.html">Ingresar</a></li>
+                    </ul>
+
+                </div>
+                <img class="logo-2" src="images/logo.svg" alt="Logo">
+
+                <div class="menu-2">        
+                    <div class="socials">
+                        <a href="https://www.instagram.com/donde.pipe_/">
+                            <div class="social">
+                                <img src="images/s3.svg" alt="">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+
+        <div class="header-content container">
+
+            <div class="swiper mySwiper-1">
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide">
+                        <div class="slider">
+                            <div class="slider-txt">
+                                <h1>Bacon Lovers</h1>
+                                <p>
+                                    La burger perfecta para tu día con bajon contiene :
+                                    BeconJam + Carne Angus + Queso Cherdars + Tomate + Lechuga
+                                </p>
+                                <div class="botones">
+                                    <a href="/Menu/menu.html"  class="btn-1">Carta</a>
+                                </div>
+                            </div>
+                            <div class="slider-img">
+                                <img src="images/Bacon Lovers.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slider">
+                            <div class="slider-txt">
+                                <h1>Tradicional</h1>
+                                <p>
+                                    Un Sandwich Simple para la colacion del día :
+                                    Carne Angus + X2 Queso Cherdars + Lechuga + Tomate
+                                </p>
+                                <div class="botones">
+                                    <a href="/Menu/menu.html"  class="btn-1">Carta</a>
+                                </div>
+                            </div>
+                            <div class="slider-img">
+                                <img src="images/Burger2.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slider">
+                            <div class="slider-txt">
+                                <h1>Sandwich Simple</h1>
+                                <p>
+                                    Burger Tradicional para un día con mucha hambre :
+                                    Jamon + Queso Cherdars + Tomate + Lechuga 
+                                </p>
+                                <div class="botones">
+                                    <a href="/Menu/menu.html"  class="btn-1">Carta</a>
+                                </div>
+                            </div>
+                            <div class="slider-img">
+                                <img src="images/Sandwich.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+
+
+
+
+
+    </header>
+
+    <main class="products">
+        <div class="tabs container">
+
+            <input type="radio" name="tabs" id="tab1" checked="checked" class="tabInput" value="1">
+            <label for="tab1">Hamburguezas</label>
+
+            <div class="tab">
+                <div class="swiper mySwiper-2" id="swiper1">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+
+                                    <img src="images/Bacon Lovers.png" alt="">
+
+                                </div>
+                                <div class="product-txt">
+                                    <h4>Bacon Lovers</h4>
+                                    <p>BeconJam + Carne Angus + Queso Cherdars + Tomate + Lechuga</p>
+                                    <span class="price">$7.890</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    
+                                    <img src="images/Burger2.png" alt="">
+
+                                </div>
+                                <div class="product-txt">
+                                    <h4>Tradicional</h4>
+                                    <p>Carne Angus + X2 Queso Cherdars + Lechuga + Tomate</p>
+                                    <span class="price">$5.690</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    
+                                    <img src="images/DobleCarne-removebg-preview.png" alt="">
+
+                                </div>
+                                <div class="product-txt">
+                                    <h4>Doble Carne</h4>
+                                    <p>X2 Carne Angus + X2 Queso Chedars + Tomate + Lechuga</p>
+                                    <span class="price">$9.890</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+
+            <input type="radio" name="tabs" id="tab2" checked="checked" class="tabInput" value="2">
+            <label for="tab2">Burritos</label>
+
+            <div class="tab">
+                <div class="swiper mySwiper-2" id="swiper2">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    
+                                    <img src="images/Burrito1.png" alt="">
+
+                                </div>
+                                <div class="product-txt">
+                                    <h4>Burrito Simple</h4>
+                                    <p>Arroz blanco o integral + Frijoles + Pollo o carne asada + Queso rallado + Lechuga + Palta
+                                    </p>
+                                    <span class="price">$6.990</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    
+                                    <img src="images/Burrito2.png" alt="">
+
+                                </div>
+                                <div class="product-txt">
+                                    <h4>Burrito XL</h4>
+                                    <p>Doble porción de arroz + Frijoles + Carne + Queso cheddar + Jalapeños + Extra palta + Cebolla caramelizada
+                                    </p>
+                                    <span class="price">$9.990</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    
+                                    <img src="images/Burrito3.png" alt="">
+
+                                </div>
+                                <div class="product-txt">
+                                    <h4>Burrito XXL</h4>
+                                    <p>Triple porción de arroz y frijoles + Carne mixta (pollo, res, cerdo) + Extra queso rallado + Palta en abundancia + Vegetales salteados + Chorizo
+                                    </p>
+                                    <span class="price">$12.990</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+
+            <input type="radio" name="tabs" id="tab3" checked="checked" class="tabInput" value="3">
+            <label for="tab3">Variedad</label>
+
+            <div class="tab">
+                <div class="swiper mySwiper-2" id="swiper3">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    
+                                    <img src="images/Sandwich.png" alt="">
+
+                                </div>
+                                <div class="product-txt">
+                                    <h4>Sandwich Simple</h4>
+                                    <p>Jamon + Queso Cherdars + Tomate + Lechuga</p>
+                                    <span class="price">$3.990</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    
+                                    <img src="images/Sanwich2.png" alt="">
+
+                                </div>
+                                <div class="product-txt">
+                                    <h4>Sandwich XL</h4>
+                                    <p>Pollo + Pepinillos + Tomate + Lechuga</p>
+                                    <span class="price">$4.990</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    
+                                    <img src="images/papasfritas.jpg" alt="">
+
+                                </div>
+                                <div class="product-txt">
+                                    <h4>Papas Fritas</h4>
+                                    <p>Papas fritas</p>
+                                    <span class="price">$2.990</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    
+                                    <img src="images/papasmechada.jpg" alt="">
+
+                                </div>
+                                <div class="product-txt">
+                                    <h4>Papas Mechada</h4>
+                                    <p>Papas fritas + Carne Mechada</p>
+                                    <span class="price">$3.990</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    
+                                    <img src="images/papas con bacon.jpg" alt="">
+
+                                </div>
+                                <div class="product-txt">
+                                    <h4>Papas Con Bacon</h4>
+                                    <p>Papas fritas + Bacon + Queso Chedars </p>
+                                    <span class="price">$5.990</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+        <section class="info container">
+
+            <div class="info-img">
+                <img src="images/info.png" alt="">
+            </div>
+
+            <div class="info-txt">
+                <h2>DondePipe</h2>
+                <p>
+                    Fundada en el año 2022, DondePipe es una tienda de comida rápida ubicada en Penco, conocida por su auténtica combinación de ingredientes frescos y recetas innovadoras. La misión de DondePipe es simple: ofrecer una experiencia culinaria única con productos de alta calidad y un servicio rápido, enfocado en satisfacer los paladares más exigentes.
+                </p>
+            </div>
+
+        </section>
+
+        <section class="horario">
+            <div class="horario-info container">
+
+                <h2>Horario de Atencion</h2>
+                <div class="horario-txt">
+                    <div class="txt">
+                        <h4>Dirección</h4>
+                        <p>
+                            Gob. Francisco de Villagranador 
+                        </p>
+                        <p>
+                            Francisco de Villagra 260, Penco, Bío Bío
+                        </p>
+                    </div>
+                    <div class="txt">
+                        <h4>Horarios</h4>
+                        <p>
+                            Lunes a Domingo: 13:00 - 23:00 Hrs
+                        </p>
+                    </div>
+                    <div class="txt">
+                        <h4>Telefono</h4>
+                        <p>
+                            +56941038216
+                        </p>
+                        <p>
+                            +56975607462
+                        </p>
+
+                    </div>
+                    <div class="txt">
+                        <h4>Instagram</h4>
+                            <a href="#">
+                                <div class="social">
+                                    <img src="images/s3.svg" alt="">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section>
+
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199.80433256232183!2d-73.00783877585783!3d-36.74970766752816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9669b5a5ede49c39%3A0x74cd348cc6253d19!2sDonde%20Pipe!5e0!3m2!1ses-419!2scl!4v1727475095434!5m2!1ses-419!2scl" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </section>
+
+        <footer class="footer container">
+
+            <img class="logo-2" src="images/logo.svg" alt="">
+            <div class="links">
+                <h4>Instagram</h4>
+                <div class="socials">
+                    <a href="#">
+                        <div class="social">
+                            <img src="images/s3.svg" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    </body>
+    </html>

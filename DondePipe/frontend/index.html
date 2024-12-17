@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Roles - Donde Pipe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+        }
+        header {
+            background-color: #000000;
+            color: rgb(0, 0, 0);
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+        }
+        .role-section {
+            background: rgb(0, 0, 0);
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(241, 239, 239, 0.1);
+        }
+        .role-section h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .role-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .role-section ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .role-section form {
+            margin-top: 1rem;
+        }
+        .role-section form input,
+        .role-section form button {
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ff0000;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 300px;
+        }
+        .role-section form button {
+            background-color: #000000;
+            color: white;
+            cursor: pointer;
+            border:1px solid #ff0000;
+        }
+    </style>
+    <script>
+        async function handleAction(role, action) {
+            const form = document.getElementById(`${role}-${action}`);
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch(`/api/${role}/${action}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) throw new Error('Error en la solicitud');
+
+                const result = await response.json();
+                alert(`Acción realizada: ${result.message}`);
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Gestión de Roles - Donde Pipe</h1>
+        <div class="menu container">
+
+            <img class="logo-1" src="images/logo.svg" alt="">
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img class="menu-icono" src="images/menu.png" alt="">
+            </label>
+            <nav class="navbar">
+                <div class="menu-1">
+                    <ul>
+                        <li><a href="/Carta/index.html">Inicio</a></li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="/Menu/menu.html">Carta</a></li>
+                        <li><a href="/Carta/Ingresar.html">Ingresar</a></li>
+                    </ul>
+
+                </div>
+                <img class="logo-2" src="images/logo.svg" alt="Logo">
+
+                <div class="menu-2">        
+                    <div class="socials">
+                        <a href="https://www.instagram.com/donde.pipe_/">
+                            <div class="social">
+                                <img src="images/s3.svg" alt="">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+    </header>
+    <main>
+        <!-- Sección para Administrador -->
+        <div class="role-section">
+            <h2>Administrador</h2>
+            <form id="admin-crearUsuario" onsubmit="event.preventDefault(); handleAction('admin', 'crearUsuario')">
+                <input type="text" name="username" placeholder="Nombre de Usuario" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <select name="userType" required>
+                    <option value="cliente">Cliente</option>
+                    <option value="trabajador">Trabajador</option>
+                    <option value="cajero">Cajero</option>
+                </select>
+                <button type="submit">Crear Usuario</button>
+            </form>
+            <form id="admin-gestionarProductos" onsubmit="event.preventDefault(); handleAction('admin', 'gestionarProductos')">
+                <input type="text" name="productName" placeholder="Nombre del Producto" required>
+                <input type="number" name="price" placeholder="Precio" required>
+                <select name="productType" required>
+                    <option value="comida">Comida</option>
+                    <option value="bebida">Bebida</option>
+                    <option value="postre">Postre</option>
+                </select>
+                <input type="file" name="image" required>
+                <button type="submit">Gestionar Producto</button>
+            </form>
+        </div>
+
+        <!-- Sección para Cajero -->
+        <div class="role-section">
+            <h2>Cajero</h2>
+            <form id="cajero-aceptarPagos" onsubmit="event.preventDefault(); handleAction('cajero', 'aceptarPagos')">
+                <input type="number" name="paymentAmount" placeholder="Monto de Pago" required>
+                <select name="paymentMethod" required>
+                    <option value="efectivo">Efectivo</option>
+                    <option value="tarjeta">Tarjeta</option>
+                    <option value="transferencia">Transferencia</option>
+                </select>
+                <button type="submit">Aceptar Pago</button>
+            </form>
+            <h3>Pedidos Activos</h3>
+            <div id="pedidos-activos"></div>
+        </div>
+
+        <!-- Sección para Cliente -->
+        <div class="role-section">
+            <h2>Cliente</h2>
+            <form id="cliente-realizarPedidos" onsubmit="event.preventDefault(); handleAction('cliente', 'realizarPedidos')">
+                <input type="text" name="orderDetails" placeholder="Detalles del Pedido" required>
+                <button type="submit">Realizar Pedido</button>
+            </form>
+            <form id="cliente-gestionarPerfil" onsubmit="event.preventDefault(); handleAction('cliente', 'gestionarPerfil')">
+                <input type="text" name="username" placeholder="Nombre de Usuario" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <button type="submit">Actualizar Perfil</button>
+            </form>
+            <h3>Historial de Pedidos</h3>
+            <div id="pedido-list"></div>
+        </div>
+    </main>
+    <footer class="footer container">
+        <img class="logo-2" src="images/logo.svg" alt="">
+        <div class="links">
+            <h4>Instagram</h4>
+            <div class="socials">
+                <a href="#">
+                    <div class="social">
+                        <img src="images/s3.svg" alt="">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        async function loadActiveOrders() {
+            try {
+                const response = await fetch('/api/cajero/pedidosActivos');
+                const result = await response.json();
+
+                if (result.orders.length > 0) {
+                    const ordersDiv = document.getElementById('pedidos-activos');
+                    ordersDiv.innerHTML = result.orders.map(order => `<p>${order.details}</p>`).join('');
+                }
+            } catch (error) {
+                console.error('Error al cargar los pedidos activos:', error);
+            }
+        }
+
+        // Cargar pedidos activos al iniciar la página de Cajero
+        loadActiveOrders();
+    </script>
+</body>
+</html>

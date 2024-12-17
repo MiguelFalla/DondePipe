@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador - Donde Pipe</title>
+</head>
+<body>
+    <h1>Bienvenido, Administrador</h1>
+    <p>Aquí puedes gestionar usuarios, productos y reportes.</p>
+    <form id="admin-crearUsuario" onsubmit="event.preventDefault(); handleAction('admin', 'crearUsuario')">
+    <input type="text" name="username" placeholder="Nombre de Usuario" required>
+    <input type="password" name="password" placeholder="Contraseña" required>
+    <select name="userType" required>
+        <option value="cliente">Cliente</option>
+        <option value="trabajador">Trabajador</option>
+        <option value="cajero">Cajero</option>
+    </select>
+    <button type="submit">Crear Usuario</button>
+</form>
+<form id="admin-gestionarProductos" onsubmit="event.preventDefault(); handleAction('admin', 'gestionarProductos')">
+    <input type="text" name="productName" placeholder="Nombre del Producto" required>
+    <input type="number" name="price" placeholder="Precio" required>
+    <input type="file" name="productImage" accept="image/*" required>
+    <label for="productType">Tipo de Comida:</label>
+    <select name="productType" id="productType" required>
+        <option value="entradas">Entradas</option>
+        <option value="principal">Platos Principales</option>
+        <option value="bebidas">Bebidas</option>
+        <option value="postres">Postres</option>
+    </select>
+    <button type="submit">Gestionar Producto</button>
+</form>
+
+<button onclick="generateSalesReport()">Generar Reporte de Ventas</button>
+
+<script>
+    async function handleAction(role, action) {
+        const form = document.getElementById(`${role}-${action}`);
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch(`/api/${role}/${action}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) throw new Error('Error en la solicitud');
+
+            const result = await response.json();
+            alert(`Acción realizada: ${result.message}`);
+        } catch (error) {
+            alert(`Error: ${error.message}`);
+        }
+    }
+</script>
